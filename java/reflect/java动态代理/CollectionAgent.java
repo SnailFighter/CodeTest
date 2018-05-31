@@ -9,8 +9,12 @@ public class CollectionAgent implements InvocationHandler{
 	}
 	
 	public Object invoke(Object proxy,Method method,Object[] args) throws Throwable{
-		System.out.println("每个学生收1000块代理费。");
-		return university.collection();
+		
+		if(method.getName().equals("collection")){
+			System.out.println("每个学生收1000块代理费。");
+              	 	return university.collection();
+		}		
+		return null;
 	}
 		
 
