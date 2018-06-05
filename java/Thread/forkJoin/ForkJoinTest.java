@@ -9,9 +9,14 @@ class ForkJoinTest{
 		ForkJoinPool pool = new ForkJoinPool(2);
 		ForkJoinTask<Long> task = new ForkJoinWork(0L,12345L);
 		Long invoke = pool.invoke(task);
+		System.out.println("the count of thread :"+pool.getActiveThreadCount());
+		System.out.println(pool.getRunningThreadCount());
+
 		Long long2 = System.currentTimeMillis();
 		System.out.println(invoke);
 		System.out.println(long2-long1);
+
+		pool.shutdown();
 
 
 
