@@ -5,7 +5,7 @@ from PIL import Image, ImageTk
 from show_dialog import welcome
 
 window = tk.Tk()
-window.title('Welcome to Python GUI')
+window.title('Snail Mail')
 window.geometry('600x400')
 
 # welcome image
@@ -28,6 +28,8 @@ entry_usr_pwd = tk.Entry(window, textvariable=var_usr_pwd, show='*')
 entry_usr_pwd.place(x=250, y=270)
 
 def usr_login():
+    # 主界面不关闭（否则整个程序都会关闭），而是隐藏
+    window.withdraw()
     welcome()
 def usr_sign_up():
     pass
