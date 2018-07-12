@@ -1,7 +1,7 @@
 #coding=utf-8
 import os
 
-path="mails"
+path='mails'
 
 def mk_mail_dir():
     # 文件夹是否已经存在
