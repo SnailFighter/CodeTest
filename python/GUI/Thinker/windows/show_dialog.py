@@ -1,7 +1,20 @@
 import tkinter as tk
+from tkinter import *
 import tkinter.messagebox
 
 from PIL import Image, ImageTk
+from read_file import mk_mail_dir
+from read_file import read_file_only_read
+
+
+
+
+#获取选择的文件名称
+def listbox_click(widget):
+    file_name = widget.curselection()
+    if len(file_name)>0:
+        content = read_file_only_read(file_name[0])
+        print(content)
 
 def welcome():
     tk.messagebox.showinfo(title="welcome",message="欢迎登陆Snail Mail!")
@@ -9,6 +22,9 @@ def welcome():
     window = tk.Toplevel()
     window.title('Snail Mail')
     window.geometry('1000x650')
+    mk_mail_dir()
+
+
 
     # 创建frame
     frm_left = tk.Frame(window,height= 650,width=200,bg='white')
@@ -65,9 +81,17 @@ def welcome():
 
     #*********************左半部分*******************************
     listbox = tk.Listbox(window,selectmode='EXTENDED',height=650,width=21, font=("Times New Roman", 15))
-    for item in ["mail1","mail2","mail3","mail4"]:
+    #listbox 绑定事件
+    listbox.bind('<Button-1>',listbox_click(listbox))
+    for item in mk_mail_dir():
         listbox.insert('end',item)
     listbox.place(x=1,y=1)
+
+
+    window.mainloop()
+
+
+
 
 
 # def alpha(self,img,factor):
@@ -77,4 +101,3 @@ def welcome():
 #     return img
 
 
-    window.mainloop()
