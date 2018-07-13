@@ -93,9 +93,7 @@ def welcome():
     global listbox
     listbox = tk.Listbox(window, selectmode='EXTENDED', height=33, width=20, font=("Times New Roman", 15))
     # listbox 绑定事件
-=======
     listbox = tk.Listbox(window, selectmode='EXTENDED', height=650, width=21, font=("Times New Roman", 15))
->>>>>>> c8ac852419ec94d04920cde4cbd398730aafa0dd
     listbox.bind('<Button-1>', listbox_click)
     for item in mk_mail_dir():
         listbox.insert('end', item)
