@@ -82,7 +82,7 @@ def welcome():
     # *********************左半部分*******************************
     global listbox
     listbox = tk.Listbox(window, selectmode='EXTENDED', height=650, width=21, font=("Times New Roman", 15))
-    # listbox 绑定事件
+    # listbox 绑定事件，Button-1 是鼠标左键，Button-2 鼠标滚轮按下，Button-3 鼠标右键
     listbox.bind('<Button-1>', listbox_click)
     for item in mk_mail_dir():
         listbox.insert('end', item)
