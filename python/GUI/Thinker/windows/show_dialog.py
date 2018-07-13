@@ -7,15 +7,25 @@ from read_file import mk_mail_dir
 from read_file import read_file_only_read
 
 
-global listbox
 
-#获取选择的文件名称
+# 获取选择的文件名称
 def listbox_click(event):
     print('fdfdf')
-    file_name = listbox.curselection()
-    if len(file_name) > 0:
-        content = read_file_only_read(mk_mail_dir()[0])
+    file_name_index = listbox.curselection()
+    if len(file_name_index) > 0:
+        content = read_file_only_read(mk_mail_dir()[file_name_index[0]])
         print(content)
+        mail_text.delete(1.0, tk.END)
+        mail_text.insert(tk.INSERT, content)
+
+# 保存模板方法
+def save_temple():
+    # 获取text空间内容
+    mail_str = mail_text.get(0, tk.END)
+    # 保存内容到文件中
+
+# 保存模板弹框
+def save_temple_dialog():
 
 
 
@@ -48,22 +58,22 @@ def welcome():
     frm_right_top_left = tk.Frame(frm_right_top, height=60, width=350, bg='white')
     frm_right_top_left.place(x=1, y=1)
 
-    label1 = tk.Label(frm_right_top_left, text="收件人：",bg='white', font=("Helvetical", 16))
+    label1 = tk.Label(frm_right_top_left, text="收件人：", bg='white', font=("Helvetical", 16))
     label1.place(x=10, y=15)
 
     mail_entry = tk.Entry(frm_right_top_left, bg='LightYellow')
     mail_entry.place(x=110, y=17)
 
-    send = tk.Button(frm_right_top, text='发送邮件',bg='LightYellow',border=3, command='')
+    send = tk.Button(frm_right_top, text='发送邮件', bg='LightYellow', border=3, command='')
     send.place(x=470, y=15)
 
     delbtn = tk.Button(frm_right_top, text='删除模板', bg='LightYellow', border=3, command='')
     delbtn.place(x=630, y=15)
 
-    savebtn = tk.Button(frm_right_top, text='保存模板', bg='LightYellow', border=3, command='')
+    savebtn = tk.Button(frm_right_top, text='保存模板', bg='LightYellow', border=3, command='save_temple')
     savebtn.place(x=550, y=15)
 
-    label3 = tk.Label(frm_right_top_left, text="@qq.com",bg='white', font=("Helvetical", 16))
+    label3 = tk.Label(frm_right_top_left, text="@qq.com", bg='white', font=("Helvetical", 16))
     label3.place(x=210, y=15)
 
     # bg image
@@ -81,12 +91,18 @@ def welcome():
 
     # *********************左半部分*******************************
     global listbox
-    listbox = tk.Listbox(window, selectmode='EXTENDED', height=650, width=21, font=("Times New Roman", 15))
+    listbox = tk.Listbox(window, selectmode='EXTENDED', height=33, width=20, font=("Times New Roman", 15))
     # listbox 绑定事件
     listbox.bind('<Button-1>', listbox_click)
     for item in mk_mail_dir():
         listbox.insert('end', item)
     listbox.place(x=1, y=1)
+
+    # 文本内容Text
+    global mail_text
+    mail_text = tk.Text(frm_right_bottom, height=585, width=795, font=("Times New Roman", 15))
+    mail_text.place(x=1, y=1)
+
 
     window.mainloop()
 
