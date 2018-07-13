@@ -26,7 +26,7 @@ def save_temple():
 
 # 保存模板弹框
 def save_temple_dialog():
-
+    pass
 
 
 def welcome():
