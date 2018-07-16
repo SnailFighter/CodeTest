@@ -5,6 +5,7 @@ import tkinter.messagebox
 from PIL import Image, ImageTk
 from read_file import mk_mail_dir
 from read_file import read_file_only_read
+from read_file import save_file
 
 
 
@@ -21,12 +22,17 @@ def listbox_click(event):
 # 保存模板方法
 def save_temple():
     # 获取text空间内容
-    mail_str = mail_text.get(0, tk.END)
+    mail_str = mail_text.get(1.0, tk.END)
+    file_name_index = listbox.curselection()
+    print(mail_str)
     # 保存内容到文件中
+    save_file(mail_str, mk_mail_dir()[file_name_index[0]])
 
 # 保存模板弹框
+
 def save_temple_dialog():
-    pass
+    print('save save')
+
 
 
 def welcome():
@@ -38,7 +44,7 @@ def welcome():
     mk_mail_dir()
 
     # 创建frame
-    frm_left = tk.Frame(window,height=650, width=200, bg='white')
+    frm_left = tk.Frame(window, height=650, width=200, bg='white')
     frm_left.pack(side='left')
     # 创建frame
     frm_right = tk.Frame(window, height=650, width=795);
@@ -70,7 +76,7 @@ def welcome():
     delbtn = tk.Button(frm_right_top, text='删除模板', bg='LightYellow', border=3, command='')
     delbtn.place(x=630, y=15)
 
-    savebtn = tk.Button(frm_right_top, text='保存模板', bg='LightYellow', border=3, command='save_temple')
+    savebtn = tk.Button(frm_right_top, text='保存模板', bg='LightYellow', border=3, command=save_temple)
     savebtn.place(x=550, y=15)
 
     label3 = tk.Label(frm_right_top_left, text="@qq.com", bg='white', font=("Helvetical", 16))

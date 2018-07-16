@@ -16,6 +16,14 @@ def mk_mail_dir():
         print(files)
         return files
 
+def save_file(content,file_name):
+    # 权限是读写
+    with open(path + '/' + file_name, 'w') as f:
+        # 判断是否可写
+        print(f.writable())
+        # 写入内容
+        f.write(content)
+        f.close()
 
 def read_file_only_read(file_name):
     with open(path+'/'+file_name, 'r') as f:
