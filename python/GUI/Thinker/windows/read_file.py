@@ -28,3 +28,10 @@ def save_file(content,file_name):
 def read_file_only_read(file_name):
     with open(path+'/'+file_name, 'r') as f:
         return f.read()
+
+
+# 删除文件
+def del_file(file_name):
+    os.remove(path+'/'+file_name)
+
+# 获取文件夹下文件名称

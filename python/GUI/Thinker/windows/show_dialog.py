@@ -6,6 +6,7 @@ from PIL import Image, ImageTk
 from read_file import mk_mail_dir
 from read_file import read_file_only_read
 from read_file import save_file
+from read_file import del_file
 
 
 
@@ -32,6 +33,20 @@ def save_temple():
 
 def save_temple_dialog():
     print('save save')
+
+# 删除模板
+
+def del_mail():
+    file_name_index = listbox.curselection()
+    # 调用删除方法
+    del_file(mk_mail_dir()[file_name_index[0]])
+    # 重新读取列表,先清空
+    listbox.delete(0,END)
+    for item in mk_mail_dir():
+        listbox.insert('end', item)
+
+
+
 
 
 
@@ -73,7 +88,7 @@ def welcome():
     send = tk.Button(frm_right_top, text='发送邮件', bg='LightYellow', border=3, command='')
     send.place(x=470, y=15)
 
-    delbtn = tk.Button(frm_right_top, text='删除模板', bg='LightYellow', border=3, command='')
+    delbtn = tk.Button(frm_right_top, text='删除模板', bg='LightYellow', border=3, command=del_mail)
     delbtn.place(x=630, y=15)
 
     savebtn = tk.Button(frm_right_top, text='保存模板', bg='LightYellow', border=3, command=save_temple)
