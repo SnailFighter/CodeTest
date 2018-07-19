@@ -41,14 +41,10 @@ def del_mail():
     # 调用删除方法
     del_file(mk_mail_dir()[file_name_index[0]])
     # 重新读取列表,先清空
-    listbox.delete(0,END)
+
+    listbox.delete(0, END)
     for item in mk_mail_dir():
         listbox.insert('end', item)
-
-
-
-
-
 
 def welcome():
     tk.messagebox.showinfo(title="welcome", message="欢迎登陆Snail Mail!")
