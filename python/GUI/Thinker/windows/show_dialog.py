@@ -8,7 +8,13 @@ from read_file import read_file_only_read
 from read_file import save_file
 from read_file import del_file
 
+from email_send import send_mail
 
+
+# 发送邮件按钮
+def send_main_btn():
+    mail_str = mail_text.get(1.0, tk.END)
+    send_mail(mail_str)
 
 # 获取选择的文件名称
 def listbox_click(event):
@@ -81,7 +87,7 @@ def welcome():
     mail_entry = tk.Entry(frm_right_top_left, bg='LightYellow')
     mail_entry.place(x=110, y=17)
 
-    send = tk.Button(frm_right_top, text='发送邮件', bg='LightYellow', border=3, command='')
+    send = tk.Button(frm_right_top, text='发送邮件', bg='LightYellow', border=3, command=send_main_btn)
     send.place(x=470, y=15)
 
     delbtn = tk.Button(frm_right_top, text='删除模板', bg='LightYellow', border=3, command=del_mail)
