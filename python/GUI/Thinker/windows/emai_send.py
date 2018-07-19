@@ -3,8 +3,8 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.header import Header
 
-sender = 'cht_feng@163.com'
-receivers = '1370587602@qq.com'  # 接收邮件，可设置为你的QQ邮箱或者其他邮箱
+sender = 'xxxxx@163.com'
+receivers = 'yyyyyyyyy@qq.com'  # 接收邮件，可设置为你的QQ邮箱或者其他邮箱
 
 # 创建一个带附件的实例
 message = MIMEMultipart()
@@ -33,7 +33,7 @@ att2["Content-Disposition"] = 'attachment; filename="runoob.txt"'
 try:
     smtpObj = smtplib.SMTP()
     smtpObj.connect('smtp.163.com')
-    smtpObj.login('cht_feng@163.com', 'cht@2018')
+    smtpObj.login('xxxxxxxxx', 'wwwwwwww')
     smtpObj.sendmail(sender, receivers, message.as_string())
     print("邮件发送成功")
     smtpObj.quit()
