@@ -3,7 +3,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.header import Header
 
-sender = 'cht_feng@163.com'
+sender = 'xxx'
 receivers = 'xxxx@qq.com'  # 接收邮件，可设置为你的QQ邮箱或者其他邮箱
 
 # 创建一个带附件的实例
@@ -27,7 +27,7 @@ def send_mail(username,mail_context):
         message.attach(MIMEText(mail_context, 'plain', 'utf-8'))
         smtpObj = smtplib.SMTP()
         smtpObj.connect('smtp.163.com')
-        smtpObj.login('cht_feng@163.com', 'cht@2018')
+        smtpObj.login('xxxx', 'xxx')
         smtpObj.sendmail(sender, receivers, message.as_string())
         print("邮件发送成功")
         smtpObj.quit()
