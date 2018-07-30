@@ -5,5 +5,9 @@
 
 
 class Log(object):
-    def _int_(self, pack_code, origin=1):
-        pass
+    def __init__(self, data_id, pack_code, origin=1, reason=''):
+        self.data_id = data_id
+        self.pack_code = pack_code
+        self.origin = origin
+        self.reason = reason
+
