@@ -7,10 +7,10 @@ from Log import Log
 
 
 def get_sql_conn():
-    connection = pymysql.connect(host='47.107.23.206',
-                                 port=3308,
+    connection = pymysql.connect(host='xxx.xx.xx.xx',
+                                 port=3306,
                                  user='root',
-                                 password='opmysql',
+                                 password='mysql',
                                  db='resources',
                                  charset='utf8',
                                  cursorclass=pymysql.cursors.DictCursor)
