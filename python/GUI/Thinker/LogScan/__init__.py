@@ -47,7 +47,7 @@ label1.place(x=10, y=15)
 
 # 添加提示信息
 e = StringVar()
-e.set("多个捆包号可用逗号隔开")
+e.set("请输入一个捆包号")
 global mail_entry
 mail_entry = tk.Entry(frm_right_top_left, width=1200, textvariable=e, bg='LightYellow')
 mail_entry.place(x=110, y=17)
