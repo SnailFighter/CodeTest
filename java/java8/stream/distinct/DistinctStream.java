@@ -7,6 +7,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class DistinctStream {
     public static void main(String[] args){
@@ -25,6 +26,9 @@ public class DistinctStream {
                 System.out.println(p.getName());
             });
 
+
+            System.out.println("count:  "+Stream.of(list).count());
+            System.out.println("count:  "+Stream.of("a","b","c").count());
 
             //----------------------distinct()-------------------------
             List<String> strList = Arrays.asList("A","B","C","A","B");
