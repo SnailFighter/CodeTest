@@ -47,7 +47,7 @@ label1.place(x=10, y=15)
 
 # 添加提示信息
 e = StringVar()
-e.set("请输入一个捆包号")
+e.set("请输入捆包号,逗号分隔")
 global mail_entry
 mail_entry = tk.Entry(frm_right_top_left, width=1200, textvariable=e, bg='LightYellow')
 mail_entry.place(x=110, y=17)
@@ -61,7 +61,7 @@ savebtn.place(x=850, y=15)
 
 global listbox
 # listbox 绑定事件
-listbox = tk.Listbox(frm_right_bottom, selectmode='EXTENDED', height=666, width=800, font=("Times New Roman", 12),
+listbox = tk.Listbox(frm_right_bottom, selectmode='EXTENDED', height=666, width=800, font=("Times New Roman", 10),
                      bg='white')
 #data_list = execute_sql()
 #if len(data_list) > 0:
