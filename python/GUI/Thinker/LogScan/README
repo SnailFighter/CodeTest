@@ -1,5 +1,7 @@
 这个项目项目是连接数据库，查看日志的工具
 
+PyInstaller 工具将.py程序转化为exe文件
+
 python3.6
 tkinter
 pymysql
