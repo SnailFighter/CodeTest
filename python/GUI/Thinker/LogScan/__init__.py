@@ -9,10 +9,14 @@ def search():
     listbox.delete(0, 'end')
     if mail_entry.get() is None:
         return
-    lists = execute_sql(mail_entry.get())
-    if len(lists) > 0:
+    # 查询数据库方法
+    lists = execute_sql(mail_entry.get(), v.get())
+
+    if lists is not None and len(lists) > 0:
         for i in lists:
             listbox.insert('end', i)
+    else:
+        listbox.insert('end', "无相关信息！")
     listbox.place(x=1, y=1)
     print
 
@@ -54,6 +58,18 @@ mail_entry.place(x=110, y=17)
 
 savebtn = tk.Button(frm_right_top, text='查   询', bg='LightYellow', border=2, command=search)
 savebtn.place(x=850, y=15)
+
+# 通过变量v来表明三个单选按钮是在同一个单选组中
+global v
+v = IntVar()
+v.set(0)
+
+Radiobutton(frm_right_top, variable=v, value=0, text='验盾', bg='white').place(x=930, y=15)
+
+Radiobutton(frm_right_top, variable=v, value=1, text='(解)锁货', bg='white').place(x=1000, y=15)
+
+Radiobutton(frm_right_top, variable=v, value=2, text='过户', bg='white').place(x=1090, y=15)
+
 
 
 # item 标题
