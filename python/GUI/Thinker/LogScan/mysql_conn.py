@@ -1,7 +1,4 @@
 import pymysql.cursors
-import datetime
-
-from Log import Log
 
 # Connect to the database
 # 全局变量
