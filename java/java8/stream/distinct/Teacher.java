@@ -17,6 +17,11 @@ public class Teacher {
         return name;
     }
 
+    public Long getId(){
+        return id;
+    }
+
+
     // only when the value of hashCode() is equal ,the equals() will be involed
     @Override
     public boolean equals(Object o) {

@@ -59,6 +59,18 @@ public class DistinctStream {
             });
 
 
+
+
+	   //-------------------group by lambda style----------
+	   Map<String,List<Teacher>> groupTeachers = teacherlist .stream().collect(Collectors.groupingBy(Teacher::getName));
+	   System.out.println(groupTeachers);
+	   for(String key : groupTeachers.keySet()){
+		for(Teacher teacher:groupTeachers.get(key)){
+			System.out.println("the teacher detail is:"+teacher.getName()+"   "+teacher.getId());
+		}
+	   }
+
+
     }
 
     // custom the principle
@@ -67,3 +79,33 @@ public class DistinctStream {
         return t -> map.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE) == null;
     }
 }
+
+
+
+/*
+
+
+Bob
+Alise
+Frank
+count:  1
+count:  3
+A
+B
+C
+------------------equals----------------
+------------------equals----------------
+Teacher Bob
+Teacher Alise
+Teacher Frank
+Teacher Owen
+{Teacher Frank=[Teacher@2ff7db93], Teacher Bob=[Teacher@c63e47f8, Teacher@c63e47f8], Teacher Alise=[Teacher@2faeca52, Teacher@2faeca52], Teacher Owen=[Teacher@1904e10]}
+the teacher detail is:Teacher Frank   2
+the teacher detail is:Teacher Bob   0
+the teacher detail is:Teacher Bob   0
+the teacher detail is:Teacher Alise   1
+the teacher detail is:Teacher Alise   1
+the teacher detail is:Teacher Owen   0
+
+
+*/
