@@ -10,10 +10,24 @@ public class OptionalTest{
 		pig1.setType("Helan pig");
 		pig1.setWeight(200.14);
 		try{
-			Optional<Pig> pigOptional1 = Optional.of(pig);
-			pigOptional1.ifPresent(value1->{
-				System.out.println(((Pig)pigOptional1.get()).getWeight());
-			});
+
+			Optional<Pig> pigOptional1 = Optional.of(pig1);
+			if(pigOptional1==null){
+				System.out.println("-------------------");
+			}
+			pigOptional1.ifPresent(p->System.out.println(p.getWeight()));
+
+			// if now pig is null ,it will throw NullPointerException in running time
+			
+			Optional<Pig> pigOptionalnull = Optional.of(pig);  //here nullPointerException
+			Pig pigEmpty = pigOptionalnull.orElse(new Pig());
+
+
+			if(pigOptionalnull.isPresent()){
+				System.out.println(pigOptionalnull.get().getWeight());
+			}
+
+
 		}catch(Exception e){
 			e.printStackTrace();
 		}

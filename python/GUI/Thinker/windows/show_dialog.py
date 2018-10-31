@@ -5,8 +5,19 @@ import tkinter.messagebox
 from PIL import Image, ImageTk
 from read_file import mk_mail_dir
 from read_file import read_file_only_read
+from read_file import save_file
+from read_file import del_file
+
+from email_send import send_mail
 
 
+# 发送邮件按钮
+def send_main_btn():
+    mail_str = mail_text.get(1.0, tk.END)
+    # 获取邮箱信息
+    print(mail_entry.get())
+    username = mail_entry.get()
+    send_mail(username, mail_str)
 
 # 获取选择的文件名称
 def listbox_click(event):
@@ -21,13 +32,28 @@ def listbox_click(event):
 # 保存模板方法
 def save_temple():
     # 获取text空间内容
-    mail_str = mail_text.get(0, tk.END)
+    mail_str = mail_text.get(1.0, tk.END)
+    file_name_index = listbox.curselection()
+    print(mail_str)
     # 保存内容到文件中
+    save_file(mail_str, mk_mail_dir()[file_name_index[0]])
 
 # 保存模板弹框
-def save_temple_dialog():
-    pass
 
+def save_temple_dialog():
+    print('save save')
+
+# 删除模板
+
+def del_mail():
+    file_name_index = listbox.curselection()
+    # 调用删除方法
+    del_file(mk_mail_dir()[file_name_index[0]])
+    # 重新读取列表,先清空
+
+    listbox.delete(0, END)
+    for item in mk_mail_dir():
+        listbox.insert('end', item)
 
 def welcome():
     tk.messagebox.showinfo(title="welcome", message="欢迎登陆Snail Mail!")
@@ -38,7 +64,7 @@ def welcome():
     mk_mail_dir()
 
     # 创建frame
-    frm_left = tk.Frame(window,height=650, width=200, bg='white')
+    frm_left = tk.Frame(window, height=650, width=200, bg='white')
     frm_left.pack(side='left')
     # 创建frame
     frm_right = tk.Frame(window, height=650, width=795);
@@ -61,16 +87,21 @@ def welcome():
     label1 = tk.Label(frm_right_top_left, text="收件人：", bg='white', font=("Helvetical", 16))
     label1.place(x=10, y=15)
 
-    mail_entry = tk.Entry(frm_right_top_left, bg='LightYellow')
+    # 添加提示信息
+    e = StringVar()
+    e.set("请输入qq号")
+    global mail_entry
+    mail_entry = tk.Entry(frm_right_top_left, textvariable=e, bg='LightYellow')
     mail_entry.place(x=110, y=17)
 
-    send = tk.Button(frm_right_top, text='发送邮件', bg='LightYellow', border=3, command='')
+
+    send = tk.Button(frm_right_top, text='发送邮件', bg='LightYellow', border=3, command=send_main_btn)
     send.place(x=470, y=15)
 
-    delbtn = tk.Button(frm_right_top, text='删除模板', bg='LightYellow', border=3, command='')
+    delbtn = tk.Button(frm_right_top, text='删除模板', bg='LightYellow', border=3, command=del_mail)
     delbtn.place(x=630, y=15)
 
-    savebtn = tk.Button(frm_right_top, text='保存模板', bg='LightYellow', border=3, command='save_temple')
+    savebtn = tk.Button(frm_right_top, text='保存模板', bg='LightYellow', border=3, command=save_temple)
     savebtn.place(x=550, y=15)
 
     label3 = tk.Label(frm_right_top_left, text="@qq.com", bg='white', font=("Helvetical", 16))
