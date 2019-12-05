@@ -3,6 +3,7 @@ class Printer {
 	public static void main(String[] args){
 		PrinterA a = new PrinterA();
 		a.printInfo("TEST CONTENT");
+		a.printDefault1("9999999999999999");
 
 		PrinterB b = new PrinterB();
 		b.printInfo("TEST CONTENT");
@@ -21,6 +22,19 @@ class Printer {
 	}
 }
 
+/*
+*
+----PrinterA write some content---->TEST CONTENT
+print some default content ******9999999999999999
+----PrinterB write some content---->TEST CONTENT
+----PrinterC write some content---->TEST CONTENT
+print some default content
+print some default content
+print some default content
+print some default content ******
+print some default content ******
+print some default content ******
+*/
 
 
 
@@ -45,3 +59,10 @@ class PrinterC implements printInfo {
 	}
 }
 
+/**
+ * 
+ * 结论：
+ * 1 接口中可以又多个默认方法，
+ * 2 默认方法可以重载
+ * 
+ */

@@ -13,9 +13,9 @@ public class ListMapThreadTest{
     public  static void main(String[] args){
         
         List<Integer> list = new ArrayList<Integer>();
-        Map<Integer,Integer> map = new HashMap<Integer,Integer>();
+        Map<Integer,Integer> map = new HashMap<Integer,Integer>(1000);
 
-        for(int i=0;i<100;i++){
+        for(int i=0;i<1000;i++){
             list.add(i);
             map.put(i,i);
         }

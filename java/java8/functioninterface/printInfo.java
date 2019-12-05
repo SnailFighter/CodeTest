@@ -7,5 +7,10 @@ interface printInfo {
 		System.out.println("print some default content ******");
 	}
 
+	default void printDefault1(String str){
+		System.out.println("print some default content ******"+str);
+	}
+
+
 	void printInfo(String content);
 }

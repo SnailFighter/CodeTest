@@ -4,11 +4,27 @@ import com.lzw.servicepro.service.UserBiz;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Hashtable;
+import java.util.TreeMap;
+import java.util.Vector;
+import java.util.concurrent.ConcurrentHashMap;
+
 @RestController
 @RequestMapping(value = "/")
 public class HelloController {
     @Autowired
     UserBiz userBiz;
+
+    TreeMap treeMap;
+
+    Hashtable hashTable;
+
+    ConcurrentHashMap concurrentHashMap;
+
+    Vector vector;
+
+    ThreadLocal<Object> threadLocal = new ThreadLocal<>();
+
 
     @RequestMapping(value = "hello")
     public String hello(){
