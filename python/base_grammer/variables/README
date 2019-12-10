@@ -1,0 +1,13 @@
+在python中，根据赋值语句自动创建对应类型的变量
+python内部使用了对象模型，这个对象模型存储对应的数据。
+在python中任何类型的变量都会被翻译成一个对象，这是变量的本质。
+
+python3中，分为6中类型：
+number：数字
+string：字符串
+tuple：元组
+sets：集合
+dictinaries：字典
+
+
+数字number又可以具体划分为int,float,bool,complex(复数)
