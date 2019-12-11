@@ -1,0 +1,18 @@
+错误分为两类：语法错误 运行时错误
+
+python把异常当作对象，通过try/except捕获异常。
+
+try
+    # 运行代码
+except exception_name:
+    # 处理异常代码
+except exception_name1:
+    # 处理异常代码1
+else:
+    # ....
+
+
+利用sys.exc_info或者last_traceback函数答应异常的详细信息
+
+创建异常又叫抛出异常，或者触发异常。是主动向系统报异常，使用关键字raise实现
+raise (Exception [, args [,tracebak]])
