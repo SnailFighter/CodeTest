@@ -1,0 +1,1 @@
+有参方法acquire(int permits)， 每调用一次该方法就获取permits个许可。
