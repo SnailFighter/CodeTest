@@ -1,0 +1,45 @@
+python 中两个线程有关的模块：
+_thread: python3之前的，提供了低级别的，简单的锁。
+threading: python3 之后用的。
+
+
+可以通过threading.Thread 类创建子线程：
+1 直接对threading.Thread进行实例化，并调用实例的start方法
+2 继承threading.Thread,并实例化，调用start方法。
+
+
+
+threading.Thread类说明：
+class threading.Thread(group=None, target=None, name=None, args=(), kwargs={},*, daemon=None)
+
+*group: 默认为空，为实现ThreadGroup类预留
+*target: 线程要执行的函数。为空就没有任何逻辑被执行。
+*name: 线程名字。默认是Thread-N的名字，N为十进制数字。
+*args: 元组类型。为调用target传入的参数。
+*kwargs: 字典类型。调用target传入的参数。
+*daemon: bool类型。为True时，则该线程为守护线程。也可调用setDaemon方法设置。
+
+
+
+处理函数绑定到线程的2种方法：
+1） 实例化时，为target参数赋值
+2） 继承threading.Thread类， 重载run方法，在其中指定
+
+
+线程状态：
+创建、就绪、运行、阻塞、退出。
+
+1） threading.Thread实例化后就进入 创建 状态；
+2） 调用start后，就进入就绪状态，等待cpu时间片；
+3） 如果分到了时间片，就是运行状态；
+4） 线程运行期间，被打断，则进入 阻塞 状态；
+5） 阻塞接受，回到 就绪 状态；
+6） 线程结束，进入 退出 状态。
+
+
+
+
+锁：
+使用threading.RLock 类获取锁，有两个方法：
+1) acquire: 获取锁，之后的代码只能被一个线程执行；
+2）release： 释放锁。
