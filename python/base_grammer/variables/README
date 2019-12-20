@@ -11,3 +11,13 @@ dictinaries：字典
 
 
 数字number又可以具体划分为int,float,bool,complex(复数)
+
+
+变量作用域：
+python中的变量有四个作用域：
+1) L:本地作用域，被当前函数包括。
+2) E:上层结构中def或者lambda的本地作用域（函数嵌套情况）。
+3）G:全局作用域，不被任何函数包括。
+4）B:内置作用域，是python的命名空间。
+
+
